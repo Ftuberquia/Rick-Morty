@@ -1,0 +1,32 @@
+.container{
+    background-color: aqua;
+    width: 170px;
+    height: 330px; 
+    padding: 1em;
+    border-radius: 10px;
+    -webkit-box-shadow: 10px 10px 6px 0px rgba(11,75,99,0.85);
+    box-shadow: 10px 10px 6px 0px rgba(11,75,99,0.85);
+    cursor: grab;
+    display: flex;
+    flex-direction: column;
+    transition: 0.5s;
+    font-size: 7px;
+    /* transform: rotate(360deg); 
+    transition: transform 3s; rota la imagen con tiempo*/
+}
+
+.closeButton{
+    border: 0px;
+    background-color: rgb(206, 33, 33);
+    width: fit-content;
+    height: fit-content;
+    border-radius: 11px;
+    cursor: grabbing;
+    color: white;
+
+}
+
+.closeButton:hover{
+    box-shadow: 10px 10px 6px 0px rgba(11,75,99,0.85);
+}
+

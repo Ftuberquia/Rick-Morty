@@ -1,0 +1,19 @@
+.searchInput{
+    border: 0px;
+    border-radius: 15px 0px 0px 15px;
+    background-color: aliceblue;
+    height: 2em;
+}
+
+.searchButton{
+    border: 0px;
+    border-radius: 0px 15px 15px 0px;
+    cursor: grabbing;
+    color: white;
+    background-color: rgb(48, 216, 56);
+    height: 2em;
+}
+
+.searchButton:hover{
+    box-shadow: 6px 7px 9px -1px rgba(9,143,47,0.72);
+}

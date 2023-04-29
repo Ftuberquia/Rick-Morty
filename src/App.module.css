@@ -1,0 +1,19 @@
+.nav{
+   background-color: rgb(98, 26, 214);
+   padding: 1em;
+   display: flex;
+   flex-direction: row;
+   justify-content: end;
+   margin-bottom: 1em;
+}
+
+body {
+   display: flex;
+   flex-direction: column;
+   background-image: url('./fondo\ app\ rick&morty.png');
+   background-size: cover;
+   background-repeat: no-repeat;
+
+}
+ 
+
