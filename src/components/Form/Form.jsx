@@ -4,12 +4,12 @@ import style from "./Form.module.css";
 
 const Form = ({Login}) => {
     const [userData, setUserData] = useState({
-        username:'',
+        email:'',
         password:'',
     });
 
     const [errors, setErrors] = useState({
-        username:"",
+        email:"",
         password:"",
     })
 
@@ -28,20 +28,21 @@ const Form = ({Login}) => {
     };
 
     return(
-        <form onSubmit={submitHandler}>
-            <div >
-                <label htmlFor="username">Email: </label>
+        <div className={style.container} >   
+            <form onSubmit={submitHandler}>
+             {/* antes estaba ='form-container' */}
+                <label htmlFor="email">Email: </label>
                 <input 
                 type="text" 
                 placeholder="Ingresa tu Email"
                 className={style.email}               
-                name="username" 
-                value={userData.username}
+                name="email" 
+                value={userData.email}
                 onChange={handleInputChange}
                 />
-                <p>{errors.username}</p>              
-            </div>
-            <div> 
+                <p>{errors.email}</p>              
+            {/* </div>
+            <div className="form-container">  */}
                 <label htmlFor="password">Password: </label>
                 <input 
                 type="text" 
@@ -51,9 +52,9 @@ const Form = ({Login}) => {
                 value={userData.password} 
                 onChange={handleInputChange}
                 />
-            </div>
-            <button className={style.loginbutton}> Login</button>
-        </form>
+                 <button className={style.loginbutton}> Login</button>
+             </form>
+         </div>
     );
 };
 

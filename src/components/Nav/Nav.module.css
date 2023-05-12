@@ -1,0 +1,44 @@
+.container{
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.btn{
+    border: 0px;
+    border-radius: 15px;
+    cursor: grabbing;
+    color: white;
+    background-color: rgb(48, 216, 56);
+    height: 2em;
+    margin: 15px 15px;
+    width: 5em;
+}
+
+.btn:hover{
+    color: rgb(0, 0, 0);
+    background-color: rgb(219, 231, 105);
+    -webkit-box-shadow: 6px 6px 3px 0px rgba(195, 214, 26, 0.85);
+    box-shadow: 6px 6px 3px 0px rgba(195, 214, 26, 0.85); }
+
+.btnright {
+        /*position: fixed;  para mantener el botón en la misma posición al desplazarnos por la página */
+        /*top: 20px;   distancia en píxeles desde la parte superior */
+        right: 10px; /* distancia en píxeles desde el borde derecho */
+        border: 0;
+        border-radius: 15px;
+        cursor: grabbing;
+        color: white;
+        background-color: rgb(48, 216, 56);
+        height: 2em;
+        margin: 15px 100px;
+        width: 5em;
+      }
+.btnright:hover {
+    color: rgb(0, 0, 0);
+    background-color: rgb(219, 231, 105);
+    -webkit-box-shadow: 6px 6px 3px 0px rgba(195, 214, 26, 0.85);
+    box-shadow: 6px 6px 3px 0px rgba(195, 214, 26, 0.85); 
+      }

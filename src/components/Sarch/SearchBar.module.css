@@ -3,6 +3,7 @@
     border-radius: 15px 0px 0px 15px;
     background-color: aliceblue;
     height: 2em;
+    margin:  15px 0 0 15px
 }
 
 .searchButton{
@@ -15,5 +16,7 @@
 }
 
 .searchButton:hover{
-    box-shadow: 6px 7px 9px -1px rgba(9,143,47,0.72);
-}
+    color: rgb(0, 0, 0);
+    background-color: rgb(219, 231, 105);
+    -webkit-box-shadow: 6px 6px 3px 0px rgba(195, 214, 26, 0.85);
+    box-shadow: 6px 6px 3px 0px rgba(195, 214, 26, 0.85);}

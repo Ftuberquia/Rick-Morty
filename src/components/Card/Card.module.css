@@ -4,15 +4,19 @@
     height: 330px; 
     padding: 1em;
     border-radius: 10px;
-    -webkit-box-shadow: 10px 10px 6px 0px rgba(11,75,99,0.85);
-    box-shadow: 10px 10px 6px 0px rgba(11,75,99,0.85);
     cursor: grab;
     display: flex;
     flex-direction: column;
     transition: 0.5s;
     font-size: 7px;
+    
+}
+.container:hover{
+    background-color: rgb(219, 231, 105);
+    -webkit-box-shadow: 10px 10px 6px 0px rgba(195, 214, 26, 0.85);
+    box-shadow: 10px 10px 6px 0px rgba(195, 214, 26, 0.85); 
     /* transform: rotate(360deg); 
-    transition: transform 3s; rota la imagen con tiempo*/
+    transition: transform 0.25s;  */
 }
 
 .closeButton{

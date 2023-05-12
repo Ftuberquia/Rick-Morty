@@ -1,62 +1,91 @@
+import axios from 'axios';
+import style from './App.module.css';
 import Cards from './components/Cards/Cards.jsx';
 import Nav from './components/Nav/Nav.jsx';
 import { useEffect, useState } from 'react';
-import style from './App.module.css';
-import axios from 'axios';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import About from './components/About/About.jsx';
 import Detail from './components/Detail/Detail.jsx';
+import About from './components/About/About.jsx';
 import Form from './components/Form/Form.jsx';
 import Favorites from './components/Favorites/Favorites.jsx';
+// import { useDispatch } from 'react-redux'; **se quito
+// import { removeComponentFavorites} from './components/redux/Actions.js' la quitamos
 
 function App() {
-   const [characters, setCharacters] = useState([]);
-   const {pathname} = useLocation();
+   let [characters, setCharacters] = useState([]);
+
+   // const dispatch = useDispatch()  ***se quito
+   
+   // CREDENCIALES FAKE
    const [access, setAccess] = useState(false);
+   // const email = 'frank.tuberquia@gmail.com';
+   // const password = 'fatu123';
+
+   const {pathname} = useLocation();
    const navigate = useNavigate();
+   
+   // EVENT HANDLERS
+   async function onSearch(id) {
+      try {
+          const url = 'http://localhost:3001/rickandmorty/character/' + id
+      
+          const { data } = await axios(url)
+          const char = characters?.find(e => e.id === Number(data.id))
+    
+          if (char) {
+            alert("Already in the list") 
+          } 
+          else if(data.id !== undefined) {
+            setCharacters(characters => [...characters, data]);
+          }
+      
+          else {
+            alert('Character not found');
+          }
+    
+      } 
+      
+       catch (error) {
+        return { error: error.message};
+      } 
+    }
+   
 
-   useEffect(() => {
-      !access && navigate('/');
-   }, [access]);
+   async function login(userData) {
+      try {
+         const { email, password } = userData;
+         const URL = 'http://localhost:3001/rickandmorty/login/';
+         const QUERY = `?email=${email}&password=${password}`
 
-// CREDENCIALES FAKE
-   const username = 'frank.tuberquia@gmail.com';
-   const password = 'fatu123';
-
-// EVENT HANDLERS
-   function onSearch(id) {
-      axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
-         if (data.name) {
-            setCharacters((oldChars) => [...oldChars, data]);
-         } else {
-            window.alert('¡No hay personajes con este ID!');
+         const { data } = await axios(URL + QUERY);
+            const { access } = data;
+            setAccess(data);
+            access && navigate('/home');
          }
-      });
+      catch(error){
+         return { error: error.message};
+      }
    }
+
+      useEffect(() => {
+         !access && navigate('/')
+      }, [access, navigate]);
    
    const onClose = (id) => {
       setCharacters(
-         characters.filter((char) => char.id !== id));
+         characters.filter((character) => character.id !== id)); //sino funcion agragar Number(id) al ultimo
+
+         // dispatch(removeComponentFavorites(id)) ***se elimino junto de actions
       };
    
-   const login = (userData) => {
-      if(userData.username === username && userData.password === password){
-         setAccess(true);
-         navigate('/home');
-      } else{
-         alert('Credenciales incorrectas');
-      }
-   };
-      
-      
       return (      
          <div className={style.body}>
-         {pathname !== '/' && <Nav onSearch = {onSearch}/>}
+         {pathname !== '/' && 
+         <Nav onSearch = {onSearch}/>}
          <Routes>
             <Route path="/" element={<Form Login={login}/>}/>
             <Route 
-               path="/home" 
-               element={<Cards characters={characters} onClose={onClose}/>} 
+               path="/home" element={<Cards characters={characters} onClose={onClose}/>} 
             />
            <Route path="/about" element={<About/>}/>
            <Route path="/favorites" element={<Favorites/>}/>
